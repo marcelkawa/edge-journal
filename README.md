@@ -1,59 +1,147 @@
-# EdgeJournal
+# Edge Journal
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.0.
+Edge Journal is a modern Angular trading journal dashboard for tracking trades, analyzing trading performance and visualizing key trading metrics in a premium dark fintech interface.
 
-## Development server
+The project was built as a portfolio project to demonstrate Angular fundamentals, component-based architecture, reactive state, form handling, dashboard design and business logic for analytics.
 
-To start a local development server, run:
+## Preview
 
-```bash
+[Edge Journal Dashboard](docs/screenshots/dashboard.png)
+
+## Features
+
+- Modern dark fintech dashboard UI
+- Sidebar and top navigation layout
+- Equity curve visualization
+- KPI cards for trading performance
+- Trade journal form
+- Trade management table
+- Searchable trade overview
+- LocalStorage persistence
+- Demo trading data
+- Responsive dashboard layout
+- Calculated trading metrics
+
+## Trading Metrics
+
+The dashboard currently calculates and displays:
+
+- Balance
+- Total profit/loss
+- Win rate
+- Average win
+- Average loss
+- Profit factor
+- Average risk-reward ratio
+- Best trade
+- Worst trade
+- Equity curve
+
+## Tech Stack
+
+- Angular
+- TypeScript
+- SCSS
+- Angular Router
+- Angular Signals
+- Reactive Forms
+- LocalStorage
+- SVG-based chart visualization
+
+## Project Structure
+
+
+src/
+  app/
+    core/
+      models/
+      services/
+      utils/
+    features/
+      dashboard/
+      journal/
+      trades/
+    layout/
+      shell/
+    shared/
+      components/
+
+
+Pages
+
+- Dashboard
+
+The dashboard provides a quick overview of trading performance, including the equity curve, KPI cards, risk rules, daily summary, trading goals, recent trades and journal insights.
+
+- Journal
+
+The journal page allows users to add new trades with information such as symbol, direction, entry price, exit price, profit/loss, setup, tags and notes.
+
+- Trades
+
+The trades page displays all trades in a searchable table. Trades can currently be filtered by symbol, setup, direction, notes and tags.
+
+- Current MVP Scope
+
+This version is the first MVP of the project. It focuses on the frontend implementation and stores data locally in the browser.
+
+Implemented:
+
+* Dashboard layout
+* KPI calculation
+* Trade form
+* Trade table
+* Search functionality
+* LocalStorage saving
+* Demo data reset
+* Dark UI styling
+
+Planned Improvements
+
+* Edit existing trades
+* Advanced filtering
+* Date range filter
+* Analytics page
+* Calendar view
+* CSV import/export
+* Real chart library integration
+* Authentication
+* Backend API
+* PostgreSQL database
+* FastAPI backend integration
+* Screenshot upload per trade
+* AI-based journal insights
+
+
+Possible Future Backend
+
+Angular Frontend
+FastAPI Backend
+PostgreSQL Database
+JWT Authentication
+
+
+Getting Started
+
+- Install dependencies:
+
+npm install
+
+- Start the development server:
+
 ng serve
-```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- Open the app:
 
-## Code scaffolding
+http://localhost:4200
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Build
 
-```bash
-ng generate component component-name
-```
+- ng build
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
 
-```bash
-ng generate --help
-```
+Purpose
 
-## Building
+This project was created to practice and demonstrate practical Angular development skills in a realistic business application context.
 
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+The goal is to build a portfolio-ready dashboard application that combines UI design, data visualization, business logic and structured frontend architecture.
