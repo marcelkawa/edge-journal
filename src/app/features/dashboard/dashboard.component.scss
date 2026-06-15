@@ -1,0 +1,257 @@
+.dashboard-page {
+  display: grid;
+  gap: 1rem;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 420px;
+  gap: 1rem;
+}
+
+.equity-card {
+  padding: 1.3rem;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+
+  h1 {
+    margin: 0.35rem 0 0;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    letter-spacing: -0.06em;
+  }
+
+  h3 {
+    margin: 0;
+  }
+
+  p {
+    margin: 0.35rem 0 0;
+  }
+
+  &.compact {
+    align-items: center;
+  }
+}
+
+.eyebrow {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.range-tabs {
+  display: flex;
+  gap: 0.3rem;
+  padding: 0.3rem;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: rgba(15, 23, 42, 0.65);
+
+  button {
+    padding: 0.55rem 0.85rem;
+    color: var(--muted);
+    border: 0;
+    border-radius: 10px;
+    background: transparent;
+
+    &.active {
+      color: var(--text);
+      background: rgba(148, 163, 184, 0.14);
+    }
+  }
+}
+
+.chart-wrap {
+  margin-top: 1.2rem;
+  height: 320px;
+  border-radius: 20px;
+  background:
+    radial-gradient(circle at 70% 50%, rgba(34, 211, 238, 0.18), transparent 35%),
+    rgba(2, 6, 23, 0.32);
+  overflow: hidden;
+
+  svg {
+    width: 100%;
+    height: 100%;
+
+    line {
+      stroke: rgba(148, 163, 184, 0.12);
+      stroke-dasharray: 6 8;
+    }
+
+    polyline {
+      filter: drop-shadow(0 0 10px rgba(34, 211, 238, 0.75));
+    }
+  }
+}
+
+.side-panels {
+  display: grid;
+  gap: 1rem;
+}
+
+.mini-panel {
+  padding: 1.2rem;
+}
+
+.rule,
+.goal {
+  margin-top: 1rem;
+
+  div:first-child {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    color: var(--muted);
+
+    strong {
+      color: var(--text);
+    }
+  }
+}
+
+.progress {
+  height: 8px;
+  margin-top: 0.65rem;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.14);
+  overflow: hidden;
+
+  span {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--cyan), var(--teal));
+    box-shadow: 0 0 18px rgba(34, 211, 238, 0.55);
+  }
+
+  &.purple span {
+    background: linear-gradient(90deg, var(--purple), #c084fc);
+  }
+
+  &.blue span {
+    background: linear-gradient(90deg, #38bdf8, #60a5fa);
+  }
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+
+  span {
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+
+  strong {
+    display: block;
+    margin-top: 0.3rem;
+    font-size: 1.35rem;
+  }
+}
+
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.bottom-grid {
+  display: grid;
+  grid-template-columns: 360px minmax(0, 1fr) 340px;
+  gap: 1rem;
+}
+
+.goals-card,
+.trades-card,
+.insights-card {
+  padding: 1.2rem;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th,
+  td {
+    padding: 0.85rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+    white-space: nowrap;
+  }
+
+  th {
+    color: var(--muted);
+    font-weight: 500;
+  }
+}
+
+.donut {
+  display: grid;
+  place-items: center;
+  width: 160px;
+  height: 160px;
+  margin: 1.2rem auto;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle, var(--card-strong) 48%, transparent 50%),
+    conic-gradient(var(--teal) 0 87%, rgba(148, 163, 184, 0.16) 87%);
+
+  div {
+    text-align: center;
+  }
+
+  strong {
+    display: block;
+    font-size: 2rem;
+  }
+
+  span {
+    color: var(--muted);
+  }
+}
+
+.insights-card ul {
+  display: grid;
+  gap: 0.7rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    color: var(--muted);
+  }
+}
+
+@media (max-width: 1200px) {
+  .hero-grid,
+  .bottom-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .kpi-grid {
+    grid-template-columns: repeat(2, minmax(180px, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .kpi-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .range-tabs {
+    flex-wrap: wrap;
+  }
+}

@@ -1,0 +1,73 @@
+<section class="trades-page">
+  <article class="glass-card trades-card">
+    <div class="header">
+      <div>
+        <span class="muted">Trade Management</span>
+        <h1>Alle Trades</h1>
+      </div>
+
+      <input
+        class="search-input"
+        placeholder="Symbol, Setup, Tag suchen..."
+        [ngModel]="searchTerm()"
+        (ngModelChange)="updateSearchTerm($event)"
+      />
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Symbol</th>
+            <th>Direction</th>
+            <th>Entry</th>
+            <th>Exit</th>
+            <th>P/L</th>
+            <th>RR</th>
+            <th>Setup</th>
+            <th>Tags</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          @for (trade of trades(); track trade.id) {
+            <tr>
+              <td>{{ trade.date }}</td>
+              <td>{{ trade.symbol }}</td>
+              <td>
+                <span
+                  class="badge"
+                  [class.badge-long]="trade.direction === 'long'"
+                  [class.badge-short]="trade.direction === 'short'"
+                >
+                  {{ trade.direction }}
+                </span>
+              </td>
+              <td>{{ trade.entryPrice }}</td>
+              <td>{{ trade.exitPrice }}</td>
+              <td [class.positive]="trade.profitLoss > 0" [class.negative]="trade.profitLoss < 0">
+                {{ trade.profitLoss | currency:'USD':'symbol':'1.2-2' }}
+              </td>
+              <td>{{ trade.riskRewardRatio }}</td>
+              <td>{{ trade.setup }}</td>
+              <td>
+                <div class="tags">
+                  @for (tag of trade.tags; track tag) {
+                    <span class="badge">{{ tag }}</span>
+                  }
+                </div>
+              </td>
+              <td>
+                <button class="delete-button" (click)="deleteTrade(trade.id)">
+                  Löschen
+                </button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </article>
+</section>

@@ -1,0 +1,55 @@
+.kpi-card {
+  min-height: 150px;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background:
+    linear-gradient(145deg, rgba(15, 23, 42, 0.96), rgba(2, 6, 23, 0.75)),
+    radial-gradient(circle at bottom right, rgba(34, 211, 238, 0.14), transparent 50%);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+
+  strong {
+    display: block;
+    margin-top: 0.9rem;
+    font-size: clamp(1.35rem, 2vw, 1.9rem);
+    letter-spacing: -0.04em;
+  }
+
+  small {
+    display: block;
+    margin-top: 0.35rem;
+  }
+}
+
+.kpi-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.kpi-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--muted);
+
+  &.up {
+    background: var(--green);
+    box-shadow: 0 0 14px var(--green);
+  }
+
+  &.down {
+    background: var(--red);
+    box-shadow: 0 0 14px var(--red);
+  }
+}
+
+.sparkline {
+  height: 34px;
+  margin-top: 1rem;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, rgba(34, 211, 238, 0.5), rgba(139, 92, 246, 0.4), transparent);
+  opacity: 0.7;
+}

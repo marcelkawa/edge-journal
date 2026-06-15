@@ -1,0 +1,249 @@
+<section class="dashboard-page">
+  <div class="hero-grid">
+    <article class="glass-card equity-card">
+      <div class="section-header">
+        <div>
+          <span class="eyebrow">Equity Curve</span>
+          <h1>{{ balance() | currency:'USD':'symbol':'1.2-2' }}</h1>
+          <p [class.positive]="totalProfitLoss() >= 0" [class.negative]="totalProfitLoss() < 0">
+            {{ totalProfitLoss() | currency:'USD':'symbol':'1.2-2' }} Gesamt P/L
+          </p>
+        </div>
+
+        <div class="range-tabs">
+          <button>1D</button>
+          <button>7D</button>
+          <button class="active">30D</button>
+          <button>3M</button>
+          <button>1Y</button>
+        </div>
+      </div>
+
+      <div class="chart-wrap">
+        <svg viewBox="0 0 760 260" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="lineGradient" x1="0" x2="1">
+              <stop offset="0%" stop-color="#22d3ee" />
+              <stop offset="100%" stop-color="#14b8a6" />
+            </linearGradient>
+          </defs>
+
+          <line x1="20" y1="60" x2="740" y2="60" />
+          <line x1="20" y1="120" x2="740" y2="120" />
+          <line x1="20" y1="180" x2="740" y2="180" />
+
+          <polyline
+            [attr.points]="equityPolyline()"
+            fill="none"
+            stroke="url(#lineGradient)"
+            stroke-width="4"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </div>
+    </article>
+
+    <aside class="side-panels">
+      <article class="glass-card mini-panel">
+        <div class="section-header compact">
+          <h3>Risk Rules</h3>
+          <span class="badge">Enabled</span>
+        </div>
+
+        <div class="rule">
+          <div>
+            <span>Daily Loss Limit</span>
+            <strong>$500.00</strong>
+          </div>
+          <div class="progress"><span style="width: 56%"></span></div>
+        </div>
+
+        <div class="rule">
+          <div>
+            <span>Max Drawdown</span>
+            <strong>$2,000.00</strong>
+          </div>
+          <div class="progress purple"><span style="width: 42%"></span></div>
+        </div>
+      </article>
+
+      <article class="glass-card mini-panel">
+        <div class="section-header compact">
+          <h3>Today’s Summary</h3>
+          <span class="badge">Demo</span>
+        </div>
+
+        <div class="summary-grid">
+          <div>
+            <span>P/L</span>
+            <strong class="positive">$1,234.56</strong>
+          </div>
+          <div>
+            <span>Trades</span>
+            <strong>4</strong>
+          </div>
+          <div>
+            <span>Win Rate</span>
+            <strong>75%</strong>
+          </div>
+        </div>
+      </article>
+    </aside>
+  </div>
+
+  <div class="kpi-grid">
+    <app-kpi-card
+      label="Balance"
+      [value]="(balance() | currency:'USD':'symbol':'1.2-2') ?? ''"
+      change="+ Demo"
+      trend="up"
+    />
+
+    <app-kpi-card
+      label="Win Rate"
+      [value]="(winRate() | number:'1.1-1') + '%'"
+      change="+ calculated"
+      trend="up"
+    />
+
+    <app-kpi-card
+      label="Profit Factor"
+      [value]="(profitFactor() | number:'1.2-2') ?? ''"
+      change="+ calculated"
+      trend="up"
+    />
+
+    <app-kpi-card
+      label="Avg Win"
+      [value]="(averageWin() | currency:'USD':'symbol':'1.2-2') ?? ''"
+      change="+ calculated"
+      trend="up"
+    />
+
+    <app-kpi-card
+      label="Avg Loss"
+      [value]="(averageLoss() | currency:'USD':'symbol':'1.2-2') ?? ''"
+      change="- calculated"
+      trend="down"
+    />
+
+    <app-kpi-card
+      label="RR Ratio"
+      [value]="(averageRiskReward() | number:'1.2-2') ?? ''"
+      change="+ calculated"
+      trend="up"
+    />
+
+    <app-kpi-card
+      label="Best Trade"
+      [value]="(bestTrade() | currency:'USD':'symbol':'1.2-2') ?? ''"
+      change="highest win"
+      trend="up"
+    />
+
+    <app-kpi-card
+      label="Worst Trade"
+      [value]="(worstTrade() | currency:'USD':'symbol':'1.2-2') ?? ''"
+      change="highest loss"
+      trend="down"
+    />
+  </div>
+
+  <div class="bottom-grid">
+    <article class="glass-card goals-card">
+      <div class="section-header compact">
+        <h3>Trading Goals</h3>
+        <span class="muted">MVP</span>
+      </div>
+
+      <div class="goal">
+        <div>
+          <strong>Profit Target</strong>
+          <span>$8,000 / $12,000</span>
+        </div>
+        <b>67%</b>
+        <div class="progress"><span style="width: 67%"></span></div>
+      </div>
+
+      <div class="goal">
+        <div>
+          <strong>Max Drawdown</strong>
+          <span>$1,120 / $2,000</span>
+        </div>
+        <b>56%</b>
+        <div class="progress purple"><span style="width: 56%"></span></div>
+      </div>
+
+      <div class="goal">
+        <div>
+          <strong>Minimum Trading Days</strong>
+          <span>18 / 20 days</span>
+        </div>
+        <b>90%</b>
+        <div class="progress blue"><span style="width: 90%"></span></div>
+      </div>
+    </article>
+
+    <article class="glass-card trades-card">
+      <div class="section-header compact">
+        <h3>Recent Trades</h3>
+        <a href="/trades" class="muted">View all →</a>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Pair</th>
+              <th>Direction</th>
+              <th>P/L</th>
+              <th>RR</th>
+              <th>Setup</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            @for (trade of recentTrades(); track trade.id) {
+              <tr>
+                <td>{{ trade.date }}</td>
+                <td>{{ trade.symbol }}</td>
+                <td>
+                  <span class="badge" [class.badge-long]="trade.direction === 'long'" [class.badge-short]="trade.direction === 'short'">
+                    {{ trade.direction }}
+                  </span>
+                </td>
+                <td [class.positive]="trade.profitLoss > 0" [class.negative]="trade.profitLoss < 0">
+                  {{ trade.profitLoss | currency:'USD':'symbol':'1.2-2' }}
+                </td>
+                <td>{{ trade.riskRewardRatio }}</td>
+                <td>{{ trade.setup }}</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    <article class="glass-card insights-card">
+      <div class="section-header compact">
+        <h3>Journal Insights</h3>
+      </div>
+
+      <div class="donut">
+        <div>
+          <strong>87%</strong>
+          <span>Positive</span>
+        </div>
+      </div>
+
+      <ul>
+        <li><span>A+ Setup</span><b>28%</b></li>
+        <li><span>Discipline</span><b>24%</b></li>
+        <li><span>Trend Following</span><b>18%</b></li>
+        <li><span>FOMO</span><b>8%</b></li>
+      </ul>
+    </article>
+  </div>
+</section>

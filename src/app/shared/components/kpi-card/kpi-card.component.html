@@ -1,0 +1,16 @@
+<div class="kpi-card">
+  <div class="kpi-header">
+    <span>{{ label() }}</span>
+    <span class="kpi-dot" [class.up]="trend() === 'up'" [class.down]="trend() === 'down'"></span>
+  </div>
+
+  <strong>{{ value() }}</strong>
+
+  @if (change()) {
+    <small [class.positive]="trend() === 'up'" [class.negative]="trend() === 'down'">
+      {{ change() }}
+    </small>
+  }
+
+  <div class="sparkline"></div>
+</div>

@@ -1,0 +1,76 @@
+.trades-page {
+  display: grid;
+  gap: 1rem;
+}
+
+.trades-card {
+  padding: 1.5rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+
+  h1 {
+    margin: 0.35rem 0 0;
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: -0.05em;
+  }
+}
+
+.search-input {
+  width: min(420px, 100%);
+  padding: 0.9rem 1rem;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: rgba(2, 6, 23, 0.6);
+  outline: none;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th,
+  td {
+    padding: 0.9rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+    white-space: nowrap;
+  }
+
+  th {
+    color: var(--muted);
+    font-weight: 500;
+  }
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.delete-button {
+  padding: 0.55rem 0.75rem;
+  color: #fecdd3;
+  border: 1px solid rgba(244, 63, 94, 0.28);
+  border-radius: 10px;
+  background: rgba(244, 63, 94, 0.08);
+  cursor: pointer;
+}
+
+@media (max-width: 800px) {
+  .header {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}
